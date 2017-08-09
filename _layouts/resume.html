@@ -94,7 +94,7 @@
 
         {% for project in site.data.projects %}
         <div class="resume-item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
-          <h3 class="resume-item-title" itemprop="name">{{ project.project }}</h3>
+          <h3 class="resume-item-title" itemprop="name"><a href="{{ project.url }}">{{ project.project }}</a></h3>
           <h4 class="resume-item-details" itemprop="description">{{ project.role }}  &bull; {{ project.duration }}</h4>
           <p class="resume-item-copy">{{ project.description }}</p>
         </div>
