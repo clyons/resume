@@ -38,6 +38,7 @@ resume_section_associations:    true
 # Resume social links
 # uncomment the options you wish to display, and add your own URL
 resume_social_links:
+<<<<<<< HEAD
   resume_github_url:            "https://github.com/clyons/"
   # resume_twitter_url:           "http://twitter.com/crayonlions"
   # resume_dribbble_url:          "https://dribbble.com/jag"
@@ -45,6 +46,15 @@ resume_social_links:
   resume_linkedin_url:          "https://www.linkedin.com/in/ciaranlyons"
   # resume_instagram_url:         "http://instagram.com/crayonlions"
   resume_website_url:           "http://ciaranlyons.com/"
+=======
+  resume_github_url:            "https://github.com/clyons/resume"
+  resume_twitter_url:           "http://twitter.com/crayonlions"
+  # resume_dribbble_url:          "https://dribbble.com/jag"
+  resume_facebook_url:          "http://facebook.com/ciaran.lyons"
+  resume_linkedin_url:          "https://www.linkedin.com/in/ciaranlyons"
+  # resume_instagram_url:         "insert your Instagram URL here"
+  resume_website_url:           "https://github.com/clyons/resume"
+>>>>>>> Initial update of personal information
 resume_print_social_links:      true
 
 # Design settings
