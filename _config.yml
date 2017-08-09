@@ -1,6 +1,6 @@
 # Site settings
-title: "Jekyll Resume Template"
-description: "A resume template for Jekyll and GitHub Pages sites."
+title: "Ciaran Lyons - Resume"
+description: "SEO Specialist and Content Marketer"
 
 # Build settings
 markdown: kramdown
@@ -10,12 +10,12 @@ sass:
 
 # Resume settings
 resume_avatar:                  "true"
-resume_name:                    "Homer J. Simpson"
-resume_title:                   "Nuclear Safety Inspector"
+resume_name:                    "Ciaran Lyons"
+resume_title:                   "SEO Specialist &amp; Content Marketer"
 resume_contact_email:
-  "homerjsimpson@youremailaddress.com"
-resume_header_contact_info: "742 Evergreen Terrace, Springfield | 555-7334 | homerjsimpson@youremailaddress.com"
-resume_header_intro: "<p>This is the executive summary. You should write a few brief, concise, and meaningful sentences about yourself from a professional context, and your immediate career goals. Make the length appropriate for your needs, but K.I.S.S.</p>"
+  "ciaran.lyons@gmail.com"
+resume_header_contact_info: "(407) 583-9108 | ciaran.lyons@gmail.com"
+resume_header_intro: "<p>I help you build your online audience.</p>"
 
 # use "yes" to display the email contact button,
 # "no" to display an "I'm not looking for work" message,
@@ -37,13 +37,13 @@ resume_section_associations:    true
 # Resume social links
 # uncomment the options you wish to display, and add your own URL
 resume_social_links:
-  resume_github_url:            "https://github.com/jglovier/resume-template"
-  resume_twitter_url:           "http://twitter.com/jglovier"
-  resume_dribbble_url:          "https://dribbble.com/jag"
-  # resume_facebook_url:          "insert Facebook URL here"
-  resume_linkedin_url:          "https://www.linkedin.com/in/joelglovier"
+  resume_github_url:            "https://github.com/clyons/resume"
+  resume_twitter_url:           "http://twitter.com/crayonlions"
+  # resume_dribbble_url:          "https://dribbble.com/jag"
+  resume_facebook_url:          "http://facebook.com/ciaran.lyons"
+  resume_linkedin_url:          "https://www.linkedin.com/in/ciaranlyons"
   # resume_instagram_url:         "insert your Instagram URL here"
-  resume_website_url:           "http://joelglovier.com"
+  resume_website_url:           "https://github.com/clyons/resume"
 resume_print_social_links:      true
 
 # Design settings
