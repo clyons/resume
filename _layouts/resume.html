@@ -93,8 +93,8 @@
         </header>
 
         {% for project in site.data.projects %}
-        <div class="resume-item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
-          <h3 class="resume-item-title" itemprop="name">{% if project.url %}<a href="{{ project.url }}">{{ project.project }}</a>{% else %}{{ project.project }}{% endif %}</h3>
+        <div class="resume-item" itemscope itemtype="http://schema.org/CreativeWork">
+          <h3 class="resume-item-title" itemprop="name">{% if project.url %}<a href="{{ project.url }}" itemprop="url">{{ project.project }}</a>{% else %}{{ project.project }}{% endif %}</h3>
           <h4 class="resume-item-details" itemprop="description">{{ project.role }}  &bull; {{ project.duration }}</h4>
           <p class="resume-item-copy">{{ project.description }}</p>
         </div>
@@ -152,7 +152,7 @@
 
         {% for association in site.data.associations %}
         <div class="resume-item" itemscope itemprop="memberOf" itemtype="http://schema.org/Organization">
-          <h3 class="resume-item-title" itemprop="name">{% if association.url %}<a href="{{ association.url }}">{{ association.organization }}</a>{% else %}{{ association.organization }}{% endif %}</h3>
+          <h3 class="resume-item-title" itemprop="name">{% if association.url %}<a href="{{ association.url }}" itemprop="url">{{ association.organization }}</a>{% else %}{{ association.organization }}{% endif %}</h3>
           <h4 class="resume-item-details" itemprop="description">{{ association.role }} &bull; {{ association.year }}</h4>
           <p class="resume-item-copy">{{ association.summary }}</p>
         </div>
@@ -193,7 +193,7 @@
         <div class="resume-item">
           <ul class="resume-item-list">
             {% for link in site.data.links %}
-            <li><a href={{ link.url }}>{{ link.description }}</a></li>
+            <li><a href={{ link.url }} itemprop="url">{{ link.description }}</a></li>
             {% endfor %}
           </ul>
         </div>
@@ -219,7 +219,7 @@
       {% endif %}
 
       <footer class="page-footer">
-        <p class="footer-line">Made by <a href="https://github.com/clyons/">@clyons</a>. Fork me on <a href="https://github.com/clyons/resume">GitHub</a>.</p>
+        <p class="footer-line">Made by <a href="{{ site.resume_social_links.resume_github_url }}">@clyons</a>. Fork me on <a href="{{ site.resume_social_links.resume_github_url }}">GitHub</a>.</p>
       </footer>
 
     </div>
