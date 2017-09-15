@@ -107,6 +107,26 @@
       <!-- end Projects -->
       {% endif %}
 
+      {% if site.resume_section_case_studies %}
+      <!-- begin Case Studies -->
+      <section class="content-section">
+        <header class="section-header">
+          <h2>Case Studies</h2>
+        </header>
+
+        {% for case_study in site.data.case_studies %}
+        <div class="resume-item" itemscope itemtype="http://schema.org/CreativeWork">
+          <meta itemprop="creator" content="{{ site.resume_name }}" itemtype="http://schema.org/Person" />
+          <h3 class="resume-item-title" itemprop="name">{% if case_study.url %}<a href="{{ case_study.url }}" itemprop="url">{{ case_study.case_study }}</a>{% else %}{{ case_study.case_study }}{% endif %}</h3>
+          <h4 class="resume-item-details" itemprop="description">{{ case_study.skill }}  &bull; {{ case_study.duration }}</h4>
+          <p class="resume-item-copy">{{ case_study.description }}</p>
+        </div>
+        {% endfor %}
+
+      </section>
+      <!-- end Case Studies -->
+      {% endif %}
+
       {% if site.resume_section_skills %}
       <!-- begin Skills -->
       <section class="content-section">
