@@ -189,7 +189,9 @@
   }
 }
 
-.print-only { display: none !important }
+@media screen {
+  .print-only { display: none !important }
+}
 
 @media print {
   .no-print { display: none !important }
