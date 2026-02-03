@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+
+    <div class="wrapper" itemscope itemtype="http://schema.org/Person">
+
+      <!-- Hero Section -->
+      <header class="hero">
+        {% if site.avatar == 'true' %}
+        <img src="images/avatar.jpg" alt="Ciaran Lyons" class="avatar" itemprop="image">
+        {% endif %}
+
+        <h1 class="name" itemprop="name">{{ site.name }}</h1>
+        <p class="tagline">{{ site.tagline }}</p>
+        {% if site.subtitle %}<p class="subtitle" itemprop="jobTitle">{{ site.subtitle }}</p>{% endif %}
+
+        <a href="mailto:{{ site.email }}" class="cta-button" itemprop="email">Get in Touch</a>
+      </header>
+
+      {% if site.section_about %}
+      <!-- About Section -->
+      <section class="section about">
+        <h2 class="section-title">About</h2>
+        <div class="about-content" itemprop="description">
+          {{ site.bio | markdownify }}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if site.section_credibility %}
+      <!-- Credibility Section -->
+      <section class="section credibility">
+        <h2 class="section-title">Background</h2>
+        <div class="credibility-grid">
+          {% for item in site.credibility %}
+          <div class="credibility-item">
+            <h3 class="credibility-title">{{ item.title }}</h3>
+            <p class="credibility-detail">{{ item.detail }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if site.section_case_studies %}
+      <!-- Case Studies Section -->
+      <section class="section case-studies">
+        <h2 class="section-title">Case Studies</h2>
+
+        {% for case_study in site.data.case_studies %}
+        <article class="case-study-card" itemscope itemtype="http://schema.org/CreativeWork">
+          <h3 class="case-study-title" itemprop="name">
+            {% if case_study.url %}
+            <a href="{{ case_study.url }}" itemprop="url">{{ case_study.case_study }}</a>
+            {% else %}
+            {{ case_study.case_study }}
+            {% endif %}
+          </h3>
+          <p class="case-study-meta">{{ case_study.skill }}</p>
+          <p class="case-study-description" itemprop="description">{{ case_study.description }}</p>
+        </article>
+        {% endfor %}
+
+      </section>
+      {% endif %}
+
+      <!-- Contact Section -->
+      <section class="section contact">
+        <h2 class="section-title">Say Hello</h2>
+        <p class="contact-text">I'm always happy to connect.</p>
+
+        <div class="contact-links">
+          {% if site.social_links.email %}
+          <a href="mailto:{{ site.social_links.email }}" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">{{ site.social_links.email }}</span>
+          </a>
+          {% endif %}
+
+          {% if site.social_links.linkedin %}
+          <a href="{{ site.social_links.linkedin }}" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">Connect</span>
+          </a>
+          {% endif %}
+
+          {% if site.social_links.github %}
+          <a href="{{ site.social_links.github }}" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">@clyons</span>
+          </a>
+          {% endif %}
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>&copy; {{ 'now' | date: "%Y" }} Ciaran Lyons</p>
+      </footer>
+
+    </div>
+
+  </body>
+
+</html>
