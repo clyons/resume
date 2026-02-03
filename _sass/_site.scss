@@ -1,0 +1,229 @@
+// Site-specific styles
+// Components for the personal site
+
+// Hero section
+.hero {
+  text-align: center;
+  padding: $space-6 0 $space-5;
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: $space-3;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: $space-1;
+
+    @include desktop {
+      font-size: 3rem;
+    }
+  }
+
+  .tagline {
+    font-size: $font-size-large;
+    color: $color-text;
+    margin-bottom: $space-1;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: $color-text-muted;
+    margin-bottom: $space-4;
+  }
+}
+
+// CTA Button
+.cta-button {
+  display: inline-block;
+  padding: $space-2 $space-4;
+  background: $color-accent;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all $transition-normal;
+  box-shadow: 0 2px 8px rgba($color-accent, 0.3);
+
+  &:hover {
+    background: $color-accent-hover;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($color-accent, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// About section
+.about {
+  .about-content {
+    font-size: $font-size-base;
+    color: $color-text;
+
+    p {
+      margin-bottom: $space-3;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Credibility section
+.credibility-item {
+  padding: $space-3;
+  background: #fafafa;
+  border-radius: 8px;
+
+  .credibility-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: $space-1;
+  }
+
+  .credibility-detail {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    margin: 0;
+  }
+}
+
+// Case studies section
+.case-study-card {
+  margin-bottom: $space-4;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .case-study-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $space-1;
+
+    a {
+      color: $color-text;
+      border-bottom: 2px solid $color-border;
+      transition: border-color $transition-fast;
+
+      &:hover {
+        color: $color-accent;
+        border-color: $color-accent;
+      }
+    }
+  }
+
+  .case-study-meta {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    margin-bottom: $space-2;
+  }
+
+  .case-study-description {
+    color: $color-text;
+    margin: 0;
+  }
+}
+
+// Contact section
+.contact {
+  text-align: center;
+
+  .contact-text {
+    color: $color-text-muted;
+    margin-bottom: $space-4;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    max-width: 300px;
+    margin: 0 auto;
+
+    @include desktop {
+      flex-direction: row;
+      max-width: none;
+      justify-content: center;
+      gap: $space-4;
+    }
+  }
+
+  .contact-link {
+    display: flex;
+    flex-direction: column;
+    padding: $space-2 $space-3;
+    background: #fafafa;
+    border-radius: 8px;
+    color: $color-text;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: $color-border;
+      color: $color-text;
+    }
+
+    .contact-link-label {
+      font-size: $font-size-small;
+      color: $color-text-muted;
+      margin-bottom: 2px;
+    }
+
+    .contact-link-value {
+      font-weight: 500;
+    }
+  }
+}
+
+// Footer
+.footer {
+  padding: $space-5 0;
+  text-align: center;
+
+  p {
+    font-size: $font-size-small;
+    color: $color-text-light;
+    margin: 0;
+  }
+}
+
+// Print styles
+@media print {
+  .hero {
+    padding: $space-3 0;
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+    }
+
+    .name {
+      font-size: 2rem;
+    }
+
+    .cta-button {
+      display: none;
+    }
+  }
+
+  .section {
+    padding: $space-3 0;
+  }
+
+  .credibility-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

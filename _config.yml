@@ -1,6 +1,6 @@
 # Site settings
-title: "Ciaran Lyons - SEO Specialist &amp; Content Marketer"
-description: "I help you build your online audience by determining what it is that your target audience seeks, and designing appealing content that converts to long-term subscribers."
+title: "Ciaran Lyons"
+description: "COO at Positive Intelligence. I build things that last and grow—websites, communities, and lately, teams."
 
 # Build settings
 markdown: kramdown
@@ -8,49 +8,45 @@ sass:
   sass_dir: _sass
   style: compressed
 
-# Resume settings
-resume_avatar:                  "true"
-resume_name:                    "Ciaran Lyons"
-resume_title:                   "SEO Specialist &amp; Content Marketer"
-resume_contact_email:           "hello@ciaranlyons.com"
-resume_contact_telephone:       "+1 (407) 583-9108"
-resume_contact_address:         ""
-resume_header_contact_info:     "+1 (407) 583-9108 | hello@ciaranlyons.com"
-resume_header_intro:            "<p>I am both an SEO specialist and experienced content marketer. I help you build your online audience by determining what it is that your target audience seeks, and designing appealing content that converts to long-term subscribers.</p>"
+# Personal info
+name: "Ciaran Lyons"
+tagline: "I build things that last and grow."
+subtitle: "COO at Positive Intelligence"
+email: "hello@ciaranlyons.com"
+location: "Chapel Hill, NC"
+avatar: "true"
 
-# use "yes" to display the email contact button,
-# "no" to display an "I'm not looking for work" message,
-# or remove the resume_looking_for_work option entirely
-# to leave blank
-resume_looking_for_work:        "yes"
+# Bio
+bio: |
+  I build things that last and grow. In the past, websites and communities; lately, teams.
 
-# Decide which sections to use
-# comment out to hide
-resume_section_experience:      true
-resume_section_education:       true
-resume_section_projects:        true
-resume_section_case_studies:    true
-# resume_section_skills:          false
-resume_section_recognition:     true
-resume_section_links:           false
-resume_section_associations:    true
-# resume_section_interests:       true
+  I'm currently Chief Operating Officer at Positive Intelligence, the leading online mental fitness training company founded by Stanford lecturer Shirzad Chamine. We've engaged more than 1 million participants in discovering how they self-sabotage and building mental muscles to maximize both performance and happiness.
 
-# Resume social links
-# uncomment the options you wish to display, and add your own URL
-resume_social_links:
-  resume_github_url:            "https://github.com/clyons/"
-  # resume_twitter_url:           "http://twitter.com/crayonlions"
-  # resume_dribbble_url:          "https://dribbble.com/jag"
-  resume_facebook_url:          "http://facebook.com/ciaran.lyons"
-  resume_linkedin_url:          "https://www.linkedin.com/in/ciaranlyons"
-  # resume_instagram_url:         "http://instagram.com/crayonlions"
-  resume_website_url:           "http://ciaranlyons.com/"
-resume_print_social_links:      true
+  Before stepping into operations, I spent a decade in growth and marketing—leading SEO and content at I Will Teach You To Be Rich, driving international growth at Sticker Mule, and building data-driven systems through my consultancy Quantify. Along the way, I picked up a Gold Lion at Cannes and taught digital marketing at General Assembly.
+
+  I'm particularly interested in how systems thinking and automation can multiply the impact of small teams.
+
+# Credibility highlights
+credibility:
+  - title: "Positive Intelligence"
+    detail: "COO — leading operations for 1M+ participants"
+  - title: "Sticker Mule"
+    detail: "Director of Global SEO — +52% organic traffic YoY"
+  - title: "I Will Teach You To Be Rich"
+    detail: "Organic/Content Marketing — +50% leads YoY"
+  - title: "Gold Lion at Cannes"
+    detail: "Project Silverline, 2013"
+
+# Sections to display
+section_about: true
+section_credibility: true
+section_case_studies: true
+
+# Social links
+social_links:
+  email: "hello@ciaranlyons.com"
+  linkedin: "https://www.linkedin.com/in/ciaranlyons"
+  github: "https://github.com/clyons/"
 
 # Design settings
-resume_theme:                   default
-
-# Note: when editing locally, remember to restart
-# your Jekyll server when you edit this file. Changes
-# to _config.yml are only recognized when the server starts
+resume_theme: default
