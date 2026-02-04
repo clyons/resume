@@ -11,18 +11,12 @@ sass:
 
 # Plugins
 plugins:
-  - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
 
 # SEO & Social
-twitter:
-  username: ciaranlyons
-  card: summary_large_image
-
 author:
   name: Ciaran Lyons
-  twitter: ciaranlyons
 
 social:
   name: Ciaran Lyons
