@@ -1,0 +1,56 @@
+name: orphan-check
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  detect-orphaned-commits:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for orphaned commits
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+        run: |
+          # The branch may already be auto-deleted — that's fine
+          if ! git rev-parse "origin/${HEAD_BRANCH}" >/dev/null 2>&1; then
+            echo "Branch origin/${HEAD_BRANCH} already deleted. No orphaned commits possible."
+            exit 0
+          fi
+
+          ORPHANS=$(git log "origin/${BASE_BRANCH}..origin/${HEAD_BRANCH}" --oneline 2>/dev/null || true)
+
+          if [ -z "$ORPHANS" ]; then
+            echo "No orphaned commits found."
+            exit 0
+          fi
+
+          echo "::warning::Orphaned commits detected on ${HEAD_BRANCH}!"
+          echo "$ORPHANS"
+
+          BODY=$(cat <<EOF
+          ## Orphaned commits detected
+
+          PR #${PR_NUMBER} was merged, but branch \`${HEAD_BRANCH}\` still has commits not reachable from \`${BASE_BRANCH}\`:
+
+          \`\`\`
+          ${ORPHANS}
+          \`\`\`
+
+          These commits will be lost when the branch is deleted. Rescue them by cherry-picking onto a new branch.
+          EOF
+          )
+
+          gh issue create \
+            --title "Orphaned commits on ${HEAD_BRANCH} after PR #${PR_NUMBER} merge" \
+            --body "$BODY" \
+            --label "bug"
