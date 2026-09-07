@@ -6,9 +6,12 @@
 
         try {
           const savedTheme = window.localStorage.getItem(storageKey)
-          root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme
+          const resolvedTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme
+          root.dataset.theme = resolvedTheme
+          root.classList.toggle('dark', resolvedTheme === 'dark')
         } catch {
           root.dataset.theme = systemTheme
+          root.classList.toggle('dark', systemTheme === 'dark')
         }
       })()
     </script><!-- Google Tag Manager --><script>
@@ -22,7 +25,7 @@
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
         f.parentNode.insertBefore(j, f)
       })(window, document, 'script', 'dataLayer', 'GTM-TJDNFN6S')
-    </script><!-- End Google Tag Manager --><meta property="og:title" content="Animating a logo in Blender with a coding agent - Ciaran Lyons"><meta property="og:description" content="Blender's Python API makes agent-generated 3D scenes surprisingly editable."><meta property="og:type" content="website"><meta property="og:url" content="https://ciaranlyons.com/til/2026/09/05/blender-logo-animation-coding-agent-macos"><meta property="og:image" content="https://ciaranlyons.com/images/ciaran-profile.jpeg?v=20260906"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="Portrait of Ciaran Lyons"><link rel="stylesheet" href="/assets/BaseLayout.smfWhbm1.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a><div class="site-shell"><header class="site-header"><a class="brand" href="/">Ciaran Lyons</a><nav class="nav" aria-label="Primary navigation"><a href="/about">About</a><a href="/writing">Writing</a><a href="/notes">Notes</a><a href="/projects">Projects</a><button class="theme-toggle" type="button" aria-label="Toggle color scheme" title="Toggle color scheme"><svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.1A8.5 8.5 0 0 1 8.9 3.6 8.5 8.5 0 1 0 20.4 15.1Z"></path></svg></button></nav></header><main class="page" id="main-content"><article class="article-shell"><header class="article-header"><p class="date">blender - September 5, 2026</p><h1 class="article-title">Animating a logo in Blender with a coding agent</h1><p class="lede">Blender&#39;s Python API makes agent-generated 3D scenes surprisingly editable.</p></header><div class="prose"><p>Via <a href="https://til.simonwillison.net/llms/blender-coding-agents-macos">Simon Willison</a> and others, I learned that LLMs are now very good at Blender. That makes sense: geometry, materials, and motion are ultimately math and code, and Blender has an extensive <a href="https://docs.blender.org/api/current/index.html">Python API</a>.</p>
+    </script><!-- End Google Tag Manager --><meta property="og:title" content="Animating a logo in Blender with a coding agent - Ciaran Lyons"><meta property="og:description" content="Blender's Python API makes agent-generated 3D scenes surprisingly editable."><meta property="og:type" content="website"><meta property="og:url" content="https://ciaranlyons.com/til/2026/09/05/blender-logo-animation-coding-agent-macos"><meta property="og:image" content="https://ciaranlyons.com/images/ciaran-profile.jpeg?v=20260906"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="Portrait of Ciaran Lyons"><link rel="stylesheet" href="/assets/BaseLayout.CkmvVNpv.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a><div class="site-shell"><header class="site-header"><a class="brand" href="/">Ciaran Lyons</a><nav class="nav" aria-label="Primary navigation"><a href="/about">About</a><a href="/writing">Writing</a><a href="/notes">Notes</a><a href="/projects">Projects</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color scheme" title="Toggle color scheme"><svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.1A8.5 8.5 0 0 1 8.9 3.6 8.5 8.5 0 1 0 20.4 15.1Z"></path></svg></button></nav></header><main class="page" id="main-content"><article class="article-shell"><header class="article-header"><p class="date">blender - September 5, 2026</p><h1 class="article-title">Animating a logo in Blender with a coding agent</h1><p class="lede">Blender&#39;s Python API makes agent-generated 3D scenes surprisingly editable.</p></header><div class="prose"><p>Via <a href="https://til.simonwillison.net/llms/blender-coding-agents-macos">Simon Willison</a> and others, I learned that LLMs are now very good at Blender. That makes sense: geometry, materials, and motion are ultimately math and code, and Blender has an extensive <a href="https://docs.blender.org/api/current/index.html">Python API</a>.</p>
 <p>I needed an experiment, so I asked GPT-5.6 Sol:</p>
 <blockquote>
 <p>Use the already installed <code>/Applications/Blender</code> to render an extruded version of the Positive Intelligence symbol and logomark from positiveintelligence.com.</p>
@@ -42,12 +45,16 @@
 <p>Files: <a href="https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/outputs/positive-intelligence-logo-cinematic-v4.mp4">MP4</a> and <a href="https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/outputs/positive-intelligence-logo-cinematic-v4.blend">Blender project</a>.</p>
 </div></article></main><footer class="site-footer"><nav aria-label="Footer navigation"><a href="/feed.xml">RSS</a><a href="https://bsky.app/profile/ciaranlyons.com" rel="me">@ciaranlyons.com</a></nav><span>© Ciaran Lyons</span></footer></div><script>
       ;(() => {
+        if (window.__ciaranThemeToggleInitialized) {
+          window.__ciaranBindThemeToggles?.()
+          return
+        }
+
+        window.__ciaranThemeToggleInitialized = true
+
         const storageKey = 'ciaranlyons-theme'
         const root = document.documentElement
-        const button = document.querySelector('.theme-toggle')
         const media = window.matchMedia('(prefers-color-scheme: dark)')
-
-        if (!button) return
 
         const systemTheme = () => (media.matches ? 'dark' : 'light')
         const savedTheme = () => {
@@ -58,22 +65,23 @@
             return null
           }
         }
-        const updateButton = () => {
+        const setTheme = (theme) => {
+          root.dataset.theme = theme
+          root.classList.toggle('dark', theme === 'dark')
+          updateToggles()
+        }
+        const updateToggles = () => {
           const activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
           const nextTheme = activeTheme === 'dark' ? 'light' : 'dark'
           const isSystemTheme = !savedTheme()
           const action = nextTheme === systemTheme() && !isSystemTheme ? `Return to system ${nextTheme} mode` : `Switch to ${nextTheme} mode`
-          button.setAttribute('aria-label', action)
-          button.setAttribute('title', action)
-        }
-        const setTheme = (theme) => {
-          root.dataset.theme = theme
-          updateButton()
-        }
 
-        updateButton()
-
-        button.addEventListener('click', () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            button.setAttribute('aria-label', action)
+            button.setAttribute('title', action)
+          })
+        }
+        const toggleTheme = () => {
           const activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
           const nextTheme = activeTheme === 'dark' ? 'light' : 'dark'
 
@@ -88,10 +96,23 @@
           }
 
           setTheme(nextTheme)
-        })
+        }
+        const bindThemeToggles = () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            if (button.dataset.themeToggleBound) return
+            button.dataset.themeToggleBound = 'true'
+            button.addEventListener('click', toggleTheme)
+          })
+
+          setTheme(savedTheme() ?? systemTheme())
+        }
 
         media.addEventListener('change', () => {
           if (!savedTheme()) setTheme(systemTheme())
         })
+
+        window.__ciaranBindThemeToggles = bindThemeToggles
+        bindThemeToggles()
+        document.addEventListener('astro:after-swap', bindThemeToggles)
       })()
     </script></body></html>
